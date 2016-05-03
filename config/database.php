@@ -54,11 +54,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', 'localhost'),
+            'host' => env('DB_HOST', 'ap-cdbr-azure-southeast-b.cloudapp.net'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'mpplproject'),
-            'username' => env('DB_USERNAME', 'sipelik'),
-            'password' => env('DB_PASSWORD', 'sipelik'),
+            'username' => env('DB_USERNAME', 'bcd73e7a208cdd'),
+            'password' => env('DB_PASSWORD', 'df4001fb'),
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
