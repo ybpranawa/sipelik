@@ -36,11 +36,7 @@
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{url('/')}}">Home</a></li>
-					@if(Auth::check())
-					<li><a><strong>{{Auth::user()->username}}</strong></a></li>
-					@endif
-					
+					<li><a href="{{url('/')}}">Home</a></li>					
 				</ul>
 
 				<div class="col-md-3 col-md-offset-2">
@@ -67,7 +63,7 @@
 						</ul>
 					</li>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Akun <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->username}}<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="{{URL::to('lihatakun')}}" class="button">Lihat Akun</a></li>
 							<li><a href="{{URL::to('editakun')}}" class="button">Edit Akun</a></li>
@@ -110,27 +106,32 @@
 	</div>
 
 	<div class="col-md-12" style="background-color:#428bca;">
-			<div class="col-md-3 col-md-offset-2" style="color:white;">
-				<p align="center" style="margin-bottom:10px;"><b>SIPELIK</b></p>
+			<div class="col-md-2 col-md-offset-2" style="color:white;">
+				<p style="margin-bottom:10px;font-size:14pt;"><b>SIPELIK</b></p>
 				<p>Tentang Sipelik</p>
 				<p>Aturan Penggunaan</p>
 				<p>Kebijakan Privasi</p>
 				<p>Berita & Pengumuman</p>
 				<p>Karir di Sipelik</p>
 			</div>
-			<div class="col-md-3" style="color:white;">
-				<p align="center" style="margin-bottom:10px;"><b>PEMBELI</b></p>
+			<div class="col-md-2" style="color:white;">
+				<p style="margin-bottom:10px;font-size:14pt;"><b>PEMBELI</b></p>
 				<p>Cara Belanja</p>
 				<p>Pembayaran</p>
 				<p>Jaminan</p>
 				<p>Tips Belanja</p>
 			</div>
-			<div class="col-md-3" style="color:white;">
-				<p align="center" style="margin-bottom:10px;"><b>PENJUAL</b></p>
+			<div class="col-md-2" style="color:white;">
+				<p style="margin-bottom:10px;font-size:14pt;"><b>PENJUAL</b></p>
 				<p>Cara Berjualan</p>
 				<p>Keuntungan Jualan</p>
 				<p>Tips Berjualan</p>
 				<p>Panduan</p>
+			</div>
+			<div class="col-md-2" style="color:white;">
+				<p style="margin-bottom:10px;font-size:14pt;"><b>CONTACT US</b></p>
+				<p style="font-size:18pt;">031 - 111555</p>
+				<p>Teknik Informatika ITS, Sukolilo, Surabaya 60111</p>
 			</div>
 	</div>
 
