@@ -72,6 +72,7 @@
                     <td></td>
                     @if($post->status==1)
                     <td><a href="{{URL::to('editbarang')}}/{{$post->id_iklan}}" role="button" class="btn btn-info">Edit Barang</a><td>
+                    <td><a href="{{URL::to('hapusbarang')}}/{{$post->id_iklan}}" role="button" class="btn btn-info">Hapus Barang</a><td>
                     @endif
                     @if($post->status==0)
                     <td><a href="{{URL::to('konfirmasi')}}/{{$post->id_iklan}}" role="button" class="btn btn-info">Konfirmasi</a></td>

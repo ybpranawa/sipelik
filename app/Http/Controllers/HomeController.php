@@ -571,15 +571,16 @@ class HomeController extends controller{
     }
   }*/
 
-    /*public function hapusbarang($id){
+    public function hapusbarang($id){
     if(Auth::check())
     {
-      $con=DB::table('iklan')->select('iklan.idpenjual')->where('iklan.id_iklan','=',$id)->get();
-      if($con!=NULL)
+      $dibeli=DB::table('transaksi')->select('id_transaksi')->where('transaksi.idiklan','=',$id)->where('transaksi.idpenjual','=',Auth::user()->id)->get();
+      $penjual=DB::table('iklan')->select('id_iklan')->where('iklan.id_iklan','=',$id)->where('iklan.idpenjual','=',Auth::user()->id)->get();
+      if($penjual && !$dibeli)
       {
         DB::table('iklan')->where('iklan.id_iklan','=',$id)->delete();
         Session::flash('message','Barang telah dihapus');
-        return redirect('/');
+        return Redirect::back();
       }
       else
       {
@@ -590,7 +591,7 @@ class HomeController extends controller{
     {
       return redirect('/');
     }
-  }*/
+  }
 
 }
 
