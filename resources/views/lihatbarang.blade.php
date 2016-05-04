@@ -57,6 +57,10 @@
                     <td>{{$post->harga}}</td>
                   </tr>
                   <tr>
+                    <td>Deskripsi</td>
+                    <td>{{$post->deskripsi_iklan}}</td>
+                  </tr>
+                  <tr>
                     <td>Stok(kg)</td>
                     <td>{{$post->stok}}</td>
                   </tr>
