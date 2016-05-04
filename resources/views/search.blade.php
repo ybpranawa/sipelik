@@ -9,6 +9,9 @@
        </div>
     @else
       @foreach($iklan as $post)
+        <div class="col-md-12">
+           <h2>Hasil Pencarian</h2>
+         </div>
         <div class="col-md-4">
           <div class="panel panel-primary">
                 <div class="panel-heading">
