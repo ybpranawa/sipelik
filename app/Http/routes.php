@@ -60,4 +60,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('batal/{id}','HomeController@batal');
     Route::get('konfirmasi/{id}','HomeController@konfirmasi');
     Route::get('search','HomeController@search');
+    Route::get('lihatbarang','HomeController@lihatbarang');
 });

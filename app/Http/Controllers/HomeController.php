@@ -236,9 +236,15 @@ class HomeController extends controller{
     if(Auth::check())
     {
       $pembeli=DB::table('transaksi')->select('id_transaksi')->where('transaksi.idiklan','=',$id)->where('transaksi.idpembeli','=',Auth::user()->id)->get();
-      if($pembeli)
+      $ada=DB::table('testimoni')->select('testimoni.id_iklan')->where('testimoni.id_iklan','=',$id)->get();
+      if($pembeli && !$ada)
       {
         return view("testimoni",compact('id'));
+      }
+      elseif($ada)
+      {
+        Session::flash('message','Anda sudah melakukan testimoni sebelumnya');
+        return redirect()->back();
       }
       else
       {
@@ -263,7 +269,7 @@ class HomeController extends controller{
       'id_iklan'=> $data['idiklan']));
       $id = $data['idiklan'];
       $dataa=array();
-      $dataa['iklan']=DB::table('iklan')->join('profileuser','iklan.idpenjual','=','profileuser.id')->select('iklan.*','profileuser.nama_user')->where('iklan.id_iklan','=',$id)->get();
+      $dataa['iklan']=DB::table('iklan')->join('profileuser','iklan.idpenjual','=','profileuser.id')->select('iklan.*','profileuser.nama_user','profileuser.alamat_kirim')->where('iklan.id_iklan','=',$id)->get();
       Session::flash('message','Terima kasih atas testimoni anda');
       return view('anwar',$dataa);
     }
@@ -278,20 +284,31 @@ class HomeController extends controller{
     if(Request::isMethod('post'))
     {
       $data=Input::all();
-      Transaksi::insertGetId(array(
-      'tanggal_terjual'=> $data['tanggal'],
-      'idpembeli'=> $data['idpembeli'],
-      'idpenjual'=> $data['idpenjual'],
-      'idiklan'=> $data['idiklan']));
-
       $id = $data['idiklan'];
       $url = $data['url'];
 
-      DB::table('iklan')
-              ->where('id_iklan', $id)
-              ->update(['status' => 0]);
-      Session::flash('message','Pembelian selesai. Klik data penjual untuk melihat informasi penjual, atau klik testimoni untuk mengisi testimoni singkat');
-      return Redirect::to($url);
+      $status = DB::table('iklan')->select('iklan.id_iklan')->where('id_iklan','=',$id)->where('iklan.status','=',1)->get();
+
+      if($status)
+      {
+         DB::table('iklan')
+                ->where('id_iklan', $id)
+                ->update(['status' => 0]);
+
+        Transaksi::insertGetId(array(
+        'tanggal_terjual'=> $data['tanggal'],
+        'idpembeli'=> $data['idpembeli'],
+        'idpenjual'=> $data['idpenjual'],
+        'idiklan'=> $data['idiklan']));
+
+        Session::flash('message','Pembelian selesai. Klik data penjual untuk melihat informasi penjual, atau klik testimoni untuk mengisi testimoni singkat');
+        return Redirect::to($url);
+      }
+      else
+      {
+        Session::flash('message','Barang sudah dibeli pembeli lain');
+        return redirect('/');
+      }
     }
     elseif(Request::isMethod('get'))
     {
@@ -483,6 +500,7 @@ class HomeController extends controller{
       {
         DB::table('transaksi')->where('transaksi.idiklan', '=', $id)->delete();
         DB::table('iklan')->where('id_iklan', $id)->update(['status' => 1]);
+        Session::flash('message','Pembatalan berhasil');
         return Redirect::back();
       }
       elseif(!$pembeli || !$beli)
@@ -504,6 +522,7 @@ class HomeController extends controller{
       if($penjual)
       {
         DB::table('iklan')->where('id_iklan', $id)->update(['status' => 2]);
+        Session::flash('message','Konfirmasi berhasil');
         return Redirect::back();
       }
       elseif(!$penjual)
@@ -524,6 +543,12 @@ class HomeController extends controller{
     $data=array();
     $data['iklan']=DB::table('iklan')->join('profileuser','iklan.idpenjual','=','profileuser.id')->select('iklan.*','profileuser.nama_user')->where('iklan.status','=',1)->where('iklan.judul_iklan','LIKE','%'.$datas['barang'].'%')->get();
     return view('search',$data);
+  }
+
+  public function lihatbarang(){
+    $data=array();
+    $data['iklan']=DB::table('iklan')->select('iklan.*')->where('iklan.idpenjual','=',Auth::user()->id)->orderBy('iklan.status', 'asc')->get();
+    return view('lihatbarang',$data);
   }
 
 

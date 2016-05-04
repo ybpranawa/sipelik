@@ -12,7 +12,7 @@ $url = Request::path();
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Konfirmasi Pembelian</h4>
       </div>
       <div class="modal-body">
         <p>Apakah anda yakin ingin membeli barang ini?</p>
@@ -85,7 +85,7 @@ $url = Request::path();
               <td>{{$post->alamat_kirim}}</td>
             </tr>
             <tr>
-              <td>gambar</td>
+              <td>Gambar</td>
               <td> <?php $bukti=$post->gambar;?><img src="{{URL::to($bukti)}}" height="42" width="42"></td>
             </tr>
             @if(Auth::check() && Auth::user()->id==$post->idpenjual)
@@ -100,11 +100,19 @@ $url = Request::path();
               <!-- <a href="{{URL::to('hapusbarang')}}/{{$post->id_iklan}}">Hapus Barang</a> -->
               @endif
               @if(Auth::check() && Auth::user()->id!=$post->idpenjual)
-              @if($post->status==0 || $post->status==2)
+              @if($post->status==0)
                 <div class="col-md-6">
-                  <h4>barang sudah terjual</h4>
+                 <h4>barang sudah terjual</h4>
                 </div>
-                <div class="col-md-6" align="right">
+                <d iv class="col-md-6" align="right">
+                  <a href="{{URL::to('penjual')}}/{{$post->id_iklan}}" role="button" class="btn btn-info">Data Penjual</a>   
+                </div>
+              @endif
+              @if($post->status==2)
+                <div class="col-md-6">
+                 <h4>barang sudah terjual</h4>
+                </div>
+                <d iv class="col-md-6" align="right">
                   <a href="{{URL::to('testimoni')}}/{{$post->id_iklan}}" role="button" class="btn btn-info">Buat Testimoni</a>
                   <a href="{{URL::to('penjual')}}/{{$post->id_iklan}}" role="button" class="btn btn-info">Data Penjual</a>   
                 </div>

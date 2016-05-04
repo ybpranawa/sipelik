@@ -2,13 +2,7 @@
 @section('header')
 <!-- Full Page Image Background Carousel Header -->
 <header id="myCarousel" class="carousel slide" style="margin-top:-20px;">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <?php
+   <?php
     $in=0;
     ?>
     @foreach ($iklan as $indexiklan)
@@ -16,8 +10,17 @@
       $in++;
       ?>
     @endforeach
+    <!-- Indicators -->
+    @if($in>=1)
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        @if($in>=2)<li data-target="#myCarousel" data-slide-to="1"></li>@endif
+        @if($in>=3)<li data-target="#myCarousel" data-slide-to="2"></li>@endif
+    </ol>
+     @endif
 
     <!-- Wrapper for Slides -->
+    @if($in>=1)
     <div class="carousel-inner">
         <div class="item active">
             <!-- Set the first background image using inline CSS below. -->
@@ -26,6 +29,7 @@
                 <h2>{{$iklan[$in-1]->judul_iklan}}</h2>
             </div>
         </div>
+        @if($in>=2)
         <div class="item">
             <!-- Set the second background image using inline CSS below. -->
             <div class="fill" style="background-image:url('{{URL::asset($iklan[$in-2]->gambar)}}');"></div>
@@ -33,6 +37,8 @@
                 <h2>{{$iklan[$in-2]->judul_iklan}}</h2>
             </div>
         </div>
+        @endif
+        @if($in>=3)
         <div class="item">
             <!-- Set the third background image using inline CSS below. -->
             <div class="fill" style="background-image:url('{{URL::asset($iklan[$in-3]->gambar)}}');"></div>
@@ -40,7 +46,9 @@
                 <h2>{{$iklan[$in-3]->judul_iklan}}</h2>
             </div>
         </div>
+        @endif
     </div>
+    @endif
 
     <!-- Controls -->
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -86,6 +94,11 @@
         </div>
         @endif
       </div> -->
+      @if(empty($iklan))
+       <div class="col-md-12">
+         <h2>Tidak ada barang tersedia</h2>
+       </div>
+      @endif
       @foreach($iklan as $post)
       <div class="col-md-4">
         <div class="panel panel-primary">

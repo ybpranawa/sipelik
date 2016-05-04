@@ -49,9 +49,11 @@
 			        </form>
 			    </div>
 				<ul class="nav navbar-nav navbar-right">
+
 					@if(Auth::check())
 					
 					<li><a href="{{URL::to('tambahbarang')}}" class="button">Buat Iklan</a></li>
+					<li><a href="{{URL::to('lihatbarang')}}" class="button">Lihat Barang</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transaksi <span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -83,6 +85,10 @@
 	</nav>
 
 	@yield('header')
+	
+	@if (Session::has('message'))
+		<div class="alert alert-info">{{ Session::get('message') }}</div>
+	@endif
 
 	@yield('content')
 

@@ -70,15 +70,15 @@
                   </tr>
                   <tr>
                     <td>Gambar</td>
-                    <td><img src="{{URL::to($bukti)}}" height="42" width="42"></td>
+                    <td><img src="{{URL::to($post->gambar)}}" height="42" width="42"></td>
                   </tr>
                   <tr>
-                    <td>Status</td>
+                    <td></td>
                     @if($post->status==0)
-                    <td><a href="{{URL::to('konfirmasi')}}/{{$post->id_iklan}}">Konfirmasi</a></td>
+                    <td><a href="{{URL::to('konfirmasi')}}/{{$post->id_iklan}}" role="button" class="btn btn-info">Konfirmasi</a></td>
                     @endif
                     @if($post->status==2)
-                    <td>Selesai</td>
+                    <td><strong>Transaksi Selesai<strong></td>
                     @endif
                   </tr>
                 </table>                
