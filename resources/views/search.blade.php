@@ -8,10 +8,10 @@
          <h2>Pencarian Tidak Ditemukan</h2>
        </div>
     @else
-      @foreach($iklan as $post)
         <div class="col-md-12">
            <h2>Hasil Pencarian</h2>
          </div>
+      @foreach($iklan as $post)
         <div class="col-md-4">
           <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -22,10 +22,6 @@
                     <tr>
                       <td>Harga(kg)</td>
                       <td>{{$post->harga}}</td>
-                    </tr>
-                    <tr>
-                      <td>Deskripsi</td>
-                      <td>{{$post->deskripsi_iklan}}</td>
                     </tr>
                     <tr>
                       <td>Stok(kg)</td>
