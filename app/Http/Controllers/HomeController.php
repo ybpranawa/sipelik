@@ -161,7 +161,8 @@ class HomeController extends controller{
       'stok'=> $data['stok'],
       'gambar'=>$filepath,
       'idpenjual'=> $data['idpenjual']));
-     
+      
+      Session::flash('message','Iklan berhasil dibuat');
       return redirect('/');
     }
     elseif(Request::isMethod('get'))
@@ -239,6 +240,7 @@ class HomeController extends controller{
       $ada=DB::table('testimoni')->select('testimoni.id_iklan')->where('testimoni.id_iklan','=',$id)->get();
       if($pembeli && !$ada)
       {
+        Session::flash('message','Anda hanya bisa melakukan testimoni sebanyak 1 kali');
         return view("testimoni",compact('id'));
       }
       elseif($ada)
@@ -301,7 +303,7 @@ class HomeController extends controller{
         'idpenjual'=> $data['idpenjual'],
         'idiklan'=> $data['idiklan']));
 
-        Session::flash('message','Pembelian selesai. Klik data penjual untuk melihat informasi penjual, atau klik testimoni untuk mengisi testimoni singkat');
+        Session::flash('message','Pembelian selesai. Klik data penjual untuk melihat informasi penjual. Silahkan isi testimoni setelah penjual mengkonfirmasi pemebelian anda');
         return Redirect::to($url);
       }
       else
@@ -326,12 +328,12 @@ class HomeController extends controller{
                                            ->select('profileuser.*')
                                            ->where('transaksi.idpembeli','=',Auth::user()->id)
                                            ->where('transaksi.idiklan','=',$id)->get();
-      $dataa=DB::table('transaksi')->join('iklan','transaksi.idiklan','=','iklan.id_iklan')
+      $pembeli=DB::table('transaksi')->join('iklan','transaksi.idiklan','=','iklan.id_iklan')
                                            ->join('profileuser','transaksi.idpembeli','=','profileuser.id')
                                            ->select('transaksi.id_transaksi')
                                            ->where('transaksi.idpembeli','=',Auth::user()->id)
                                            ->where('transaksi.idiklan','=',$id)->get();
-      if($dataa)
+      if($pembeli)
       {                                   
         return view('penjual',$data);
       }
@@ -410,6 +412,7 @@ class HomeController extends controller{
       }
       else
       {
+        Session::flash('message','Anda tidak bisa edit iklan ini. Silahkan cek transaksi penjualan anda');
         return redirect('/');
       }
     }
@@ -445,7 +448,7 @@ class HomeController extends controller{
       DB::table('iklan')
           ->where('id_iklan', $data['idiklan'])
           ->update(['gambar'=> $filepath, 'judul_iklan' => $data['judul'], 'harga' => $data['harga'], 'deskripsi_iklan' => $data['deskripsi'],'stok' => $data['stok']]);
-      Session::flash('message','Berhasil edit barang');
+      Session::flash('message','Edit iklan berhasil');
       return redirect('/');
     }
       elseif(Request::isMethod('get'))
@@ -505,6 +508,7 @@ class HomeController extends controller{
       }
       elseif(!$pembeli || !$beli)
       {
+        Session::flash('message','Pembatalan gagal');
         return redirect('/');
       }
     }
@@ -527,6 +531,7 @@ class HomeController extends controller{
       }
       elseif(!$penjual)
       {
+        Session::flash('message','Konfirmasi gagal');
         return redirect('/');
       }
     }
@@ -579,11 +584,12 @@ class HomeController extends controller{
       if($penjual && !$dibeli)
       {
         DB::table('iklan')->where('iklan.id_iklan','=',$id)->delete();
-        Session::flash('message','Barang telah dihapus');
+        Session::flash('message','Iklan telah dihapus');
         return Redirect::back();
       }
       else
       {
+        Session::flash('message','Hapus iklan gagal');
         return redirect('/');
       }
     }

@@ -98,6 +98,26 @@
        <div class="col-md-12">
          <h2>Tidak ada barang tersedia</h2>
        </div>
+       </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
       @endif
       @foreach($iklan as $post)
       <div class="col-md-4">

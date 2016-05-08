@@ -39,9 +39,30 @@
           <h2>Anda tidak mempunyai barang</h2>
           <hr></hr>
         </div>
+        </div>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
       @else
         <div class="col-md-12">
-          <h2>Daftar Barang Anda</h2>
+          <h2>Daftar Iklan Anda</h2>
           <hr></hr>
         </div>
         @foreach($iklan as $post)        
@@ -71,8 +92,8 @@
                   <tr>
                     <td></td>
                     @if($post->status==1)
-                    <td><a href="{{URL::to('editbarang')}}/{{$post->id_iklan}}" role="button" class="btn btn-info">Edit Barang</a><td>
-                    <td><a href="{{URL::to('hapusbarang')}}/{{$post->id_iklan}}" role="button" class="btn btn-info">Hapus Barang</a><td>
+                    <td><a href="{{URL::to('editbarang')}}/{{$post->id_iklan}}" role="button" class="btn btn-info">Edit Iklan</a><td>
+                    <td><a href="{{URL::to('hapusbarang')}}/{{$post->id_iklan}}" role="button" class="btn btn-info">Hapus Iklan</a><td>
                     @endif
                     @if($post->status==0)
                     <td><a href="{{URL::to('konfirmasi')}}/{{$post->id_iklan}}" role="button" class="btn btn-info">Konfirmasi</a></td>

@@ -11,10 +11,10 @@
 					 <form class="form col-md-12 center-block" action="{{URL::to('login')}}" method="POST" enctype="multipart/form-data">
 						<fieldset>
 							<div class="form-group">
-								<input class="form-control" placeholder="Username" name="username" type="text" autofocus="">
+								<input class="form-control" placeholder="Username" name="username" type="text" autofocus="" required>
 							</div>
 							<div class="form-group">
-								<input class="form-control" placeholder="Password" name="password" type="password" value="">
+								<input class="form-control" placeholder="Password" name="password" type="password" value="" required>
 							</div>
 							{{csrf_field()}}
 						 <button class="btn btn-primary btn btn-block">Masuk</button>

@@ -10,7 +10,7 @@ error_reporting(0); // Turn off all error reporting
 <div class="row">
 		<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
 			<div class="login-panel panel panel-info">
-				<div class="panel-heading">Edit Barang  </div>
+				<div class="panel-heading">Edit Iklan  </div>
 				<div class="panel-body">
 					 <form class="form col-md-12 center-block" action="{{URL::to('editbarangproses')}}" method="POST" enctype="multipart/form-data">
 						<fieldset>

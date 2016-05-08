@@ -54,9 +54,29 @@ $url = Request::path();
     <div class="col-md-8 col-md-offset-2">
     @if(empty($iklan))
       <h1>Tidak ada barang yang dijual</h1>
+      </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
     @else
       <div class="panel panel-info">        
-        <div class="panel-heading">Daftar Ikan</div>
+        <div class="panel-heading">Detail Ikan</div>
         <div class="panel-body">
           <table class="table table-hover table-stripped">
           @foreach($iklan as $post)
@@ -94,7 +114,8 @@ $url = Request::path();
                @endif
                @if($post->status==1)
                 <div class="col-md-6">
-                  <a href="{{URL::to('editbarang')}}/{{$post->id_iklan}}" role="button" class="btn btn-info">Edit Barang</a>
+                  <a href="{{URL::to('editbarang')}}/{{$post->id_iklan}}" role="button" class="btn btn-info">Edit Iklan</a>
+                  <a href="{{URL::to('hapusbarang')}}/{{$post->id_iklan}}" role="button" class="btn btn-info">Hapus Iklan</a>
                 </div>
                @endif
               <!-- <a href="{{URL::to('hapusbarang')}}/{{$post->id_iklan}}">Hapus Barang</a> -->

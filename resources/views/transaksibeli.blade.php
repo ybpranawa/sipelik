@@ -40,6 +40,26 @@
           <h2>Anda Belum Melakukan Transaksi Pembelian</h2>
           <hr></hr>
         </div>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
       @else
         <div class="col-md-12">
           <h2>Daftar Transaksi Pembelian</h2>

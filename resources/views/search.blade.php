@@ -7,6 +7,26 @@
       <div class="col-md-12">
          <h2>Pencarian Tidak Ditemukan</h2>
        </div>
+       </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
     @else
         <div class="col-md-12">
            <h2>Hasil Pencarian</h2>

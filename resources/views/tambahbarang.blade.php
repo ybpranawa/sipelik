@@ -26,7 +26,7 @@
 								 <input type="file" id="exampleInputFile" name="file" required>
 							</div>
 							{{csrf_field()}}
-						 <button class="btn btn-primary btn btn-block">Daftar</button>
+						 <button class="btn btn-primary btn btn-block">Buat Iklan</button>
 						</fieldset>
 					</form>
 				</div>

@@ -11,28 +11,28 @@
 					 <form class="form col-md-12 center-block" action="{{URL::to('daftar')}}" method="POST" enctype="multipart/form-data">
 						<fieldset>
 							<div class="form-group">
-								<input class="form-control" placeholder="Username" name="username" type="text" autofocus="">
+								<input class="form-control" placeholder="Username" name="username" type="text" autofocus="" required>
 							</div>
 							<div class="form-group">
-								<input class="form-control" placeholder="Password" name="password" type="password" value="">
+								<input class="form-control" placeholder="Password" name="password" type="password" value="" required>
 							</div>
 							<div class="form-group">
-								<input class="form-control" placeholder="Konfirmasi Password" name="conpassword" type="password" value="">
+								<input class="form-control" placeholder="Konfirmasi Password" name="conpassword" type="password" value="" required>
 							</div>
 							<div class="form-group">
-								<input class="form-control" placeholder="Nama" name="nama" type="text" value="">
+								<input class="form-control" placeholder="Nama" name="nama" type="text" value="" required>
 							</div>
 							<div class="form-group">
-								<input class="form-control" placeholder="Nomor Telepon atau HP" name="telp" type="text" value="">
+								<input class="form-control" placeholder="Nomor Telepon atau HP" name="telp" type="text" value="" required>
 							</div>
 							<div class="form-group">
-								<input class="form-control" placeholder="Alamat Asal" name="asal" type="text" value="">
+								<input class="form-control" placeholder="Alamat Asal" name="asal" type="text" value="" required>
 							</div>
 							<div class="form-group">
-								<input class="form-control" placeholder="Alamat Pengiriman" name="kirim" type="text" value="">
+								<input class="form-control" placeholder="Alamat Pengiriman" name="kirim" type="text" value="" required>
 							</div>
 							<div class="form-group">
-								<input class="form-control" placeholder="E-mail" name="email" type="email" value="">
+								<input class="form-control" placeholder="E-mail" name="email" type="email" value="" required>
 							</div>
 							{{csrf_field()}}
 						 <button class="btn btn-primary btn btn-block">Daftar</button>

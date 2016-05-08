@@ -39,6 +39,26 @@
           <h2>Belum Ada Barang Terjual</h2>
           <hr></hr>
         </div>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
       @else
         <div class="col-md-12">
           <h2>Daftar Transaksi Penjualan</h2>
